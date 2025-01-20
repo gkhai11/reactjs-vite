@@ -1,7 +1,7 @@
 import { Button, Input, notification } from "antd";
 import { useState } from "react";
-import axios from "axios";
-import createUserAPI from "../../services/api.service";
+import { createUserAPI } from "../../services/api.service";
+// import axios from "axios";
 const UserForm = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,6 +13,11 @@ const UserForm = () => {
       notification.success({
         message: "create user",
         description: "Tao user thanh cong",
+      });
+    } else {
+      notification.error({
+        message: "error create user",
+        description: JSON.stringify(res.message),
       });
     }
   };
