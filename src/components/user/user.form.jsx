@@ -30,11 +30,10 @@ const UserForm = (props) => {
   const resetAndCloseModal = () => {
     setIsModalOpen(false);
     setFullName("");
+    setPhone("");
     setEmail("");
     setPassword("");
-    setPhone("");
   };
-
   return (
     <div className="user-form" style={{ margin: "10px 0" }}>
       <div style={{ display: "flex", gap: "10px", flexDirection: "column" }}>
@@ -45,6 +44,7 @@ const UserForm = (props) => {
           </Button>
         </div>
       </div>
+
       <Modal
         title="Create User"
         open={isModalOpen}
