@@ -5,6 +5,8 @@ import {
   HomeOutlined,
   ProductOutlined,
   SettingOutlined,
+  AliwangwangOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import { AuthContext } from "../context/auth.context";
@@ -34,21 +36,32 @@ const Header = () => {
       key: "books",
       icon: <ProductOutlined />,
     },
-    {
-      label: "Cài đặt",
-      key: "setting",
-      icon: <SettingOutlined />,
-      children: [
-        {
-          label: <Link to={"/login"}>Đăng nhập</Link>,
-          key: "login",
-        },
-        {
-          label: "Đăng xuất",
-          key: "logout",
-        },
-      ],
-    },
+
+    ...(!user.id
+      ? [
+          {
+            label: <Link to={"/login"}>Đăng nhập</Link>,
+            key: "login",
+            icon: <LoginOutlined />,
+          },
+        ]
+      : []),
+
+    ...(user.id
+      ? [
+          {
+            label: `Welcome ${user.fullName}`,
+            key: "setting",
+            icon: <AliwangwangOutlined />,
+            children: [
+              {
+                label: "Đăng xuất",
+                key: "logout",
+              },
+            ],
+          },
+        ]
+      : []),
   ];
   return (
     <Menu
