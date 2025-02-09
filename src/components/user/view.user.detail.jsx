@@ -56,7 +56,6 @@ const ViewUserDetail = (props) => {
       });
       return;
     }
-    console.log("check", resUpload);
   };
 
   return (
